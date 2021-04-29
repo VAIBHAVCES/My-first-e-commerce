@@ -1,5 +1,33 @@
 <%- include('../partials/header.ejs')%>
 <%- include('../partials/navbar.ejs')%>
+<style>
+    .card{
+        height: 400px;
+    }
+</style>
 
-    <h1>Welcome to home page </h1>
-<%- include('../partials/footer.ejs')%>
+
+    <div class="container"> 
+
+
+        <div class="row">
+            
+                <%for(let i=0;i<pds.length;i++) { %>
+                 <div class="col-lg-3">
+                    <div class="card my-3 text-center" style="width: 18rem;">
+                        <img src="<%=pds[i].img%>" class="card-img-top" alt="products">
+                        <div class="card-body">
+                          <h5 class="card-title"> <%= pds[i].name %></h5>
+                          <p class="card-text"> <%=pds[i].desc.substring(0,70) %></p>
+                          <a href="/products/<%=pds[i]._id%>" class="btn btn-outline-primary">More Info</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                <%} %>
+
+        </div>
+       
+    </div>
+
+    <%- include('../partials/footer.ejs')%>

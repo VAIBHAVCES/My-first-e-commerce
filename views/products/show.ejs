@@ -1,0 +1,38 @@
+<%-include('../partials/header') %>
+<%-include('../partials/navbar') %>
+
+
+<div class="container"> 
+    <div class="row mt-5">
+
+                <div class="col-lg-6 col-md-12" style=" height :100% ;">
+                    <div class="card my-3 text-center" >
+                        <img src="<%=product.img%>" class="card-img-top" alt="products">
+                        <div class="card-body">
+                          <h5 class="card-title"> <%= product.name %></h5>
+                          
+                          <h5 class="card-title">$ <%= product.price %></h5>
+                          <p class="card-text"> <%=product.desc %></p>
+                          <a href="#" class="btn btn-secondary">Add to cart</a>
+                          <a href="/products/<%=product._id%>/edit" class="btn btn-warning">Edit </a>
+
+                          <form action="/products/<%=product._id%>?_method=DELETE" method="post">
+                            <button  class="btn btn-danger">Delete</button>
+                        </form>
+                          <a href="#" class="btn btn-success">Buy</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                  
+               <div class="col-lg-6">
+                   <h1>Leave a review</h1>
+               </div>
+            
+    
+    </div>
+
+</div>
+
+
+<%-include('../partials/footer') %>
