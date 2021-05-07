@@ -25,14 +25,66 @@
                     
                 </div>
                   
-               <div class="col-lg-6">
-                   <h1>Leave a review</h1>
-               </div>
+                <div class="col-lg-6 ">
+
+
+                    <div class="container reviewForm">
+                        <form action="/products/<%= product._id %>/reviews" method="POST" class="needs-validation" novalidate>
             
+                            <h1 class = "text-center">Leave a Review</h1>
+                          
+                            
+                             
+                            <label for="review" class="form-label">Reviews</label>
+                            <input type="range" class="form-range" min="0" max="5" id="review" name="review">
+                            
+                            <div class="mb-3">
+                                <label for="desc" class="form-label">Description</label>
+                                <textarea class="form-control" id="comment"  name = "comment"rows="5" placeholder="Comment" required></textarea>
+                            </div>
+                        
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    
+                    <div class="allReviews m-3">
+
+
+                        <% for(let i=0; i<product.reviews.length;i++){ %>
+                              
+                        <div class="card my-2">
+                            <div class="card-header">
+                              Username
+                            </div>
+                            
+                            <div class="card-body">
+                              Reviews :
+                              <h5 class="card-title" style="color:green">
+                                <% for(let j=0; j<product.reviews[i].review;j++){ %>
+                                    ★
+                                <%}%>
+
+                              </h5>
+                              <p class="card-text"><%=product.reviews[i].comment%></p>
+                            
+                            </div>
+
+                          </div>
+
+                        <%}%>
+                    </div>
+
+            
+                </div>
     
     </div>
 
 </div>
+
+
 
 
 <%-include('../partials/footer') %>
