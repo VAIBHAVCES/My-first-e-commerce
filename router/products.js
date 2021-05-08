@@ -1,4 +1,5 @@
 const express = require('express');
+const { isLoggedIn } = require('../middleware.js');
 const router = express.Router();
 const {Products} = require('../models/products.js');
 const {Review}= require('../models/reviews.js')
@@ -20,9 +21,8 @@ router.get('/products' , async(req,res)=>{
 });
 
 
-router.get("/products/new",(req,res)=>{
+router.get("/products/new",isLoggedIn,(req,res)=>{
     try{
-
         res.render('products/new');
     }catch(err){
         req.flash('error',"Error in products/new router of get request  "); 
@@ -36,7 +36,6 @@ router.get("/products/:id",async(req,res)=>{
 
         let {id}=req.params;
         let product = await Products.findById(id).populate('reviews');
-        console.log(product);
         res.render("products/show",{product});
     }catch(err){
         req.flash('error',"Error in products:id router of get request  "); 
@@ -52,7 +51,7 @@ router.delete("/products/:id",async(req,res)=>{
     req.flash('success','Product has been deleted successfully ')
     res.redirect('/products');
 });
-router.get("/products/:id/edit",async(req,res)=>{
+router.get("/products/:id/edit",isLoggedIn,async(req,res)=>{
 
     // getter for update in the prodcuts page 
     try{
@@ -97,11 +96,12 @@ router.post("/products",async(req,res)=>{
     
 });
 
-router.post("/products/:id/reviews", async(req,res)=>{
+router.post("/products/:id/reviews", isLoggedIn, async(req,res)=>{
 
     try{
         const pdReview= await Products.findById(req.params.id);
-        const review = new Review(req.body);
+        const newObj = { user:req.user.username, ...req.body};
+        const review = new Review(newObj);
         pdReview.reviews.push(review);
         await review.save();
         await pdReview.save();
@@ -111,6 +111,7 @@ router.post("/products/:id/reviews", async(req,res)=>{
         req.flash('error',"Error in products:id/reviews router of post request  "); 
         res.render("partials/error");
     }
+
 });
 
 

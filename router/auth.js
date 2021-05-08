@@ -19,7 +19,6 @@ router.post("/register",async(req,res)=>{
     try{
         const user = new Users({email:req.body.email,username:req.body.username});
         const newUser= await Users.register(user, req.body.password);
-        console.log(newUser);   
         req.flash('success','User Registered Successfully');
         res.redirect("/products");
 
@@ -40,7 +39,6 @@ router.post('/login' , passport.authenticate('local',{
     failureFlash:true
 }), (req,res)=>{
     req.flash('success', 'Logined succesfully do enjoy !');
-    console.log(req.user);
     res.redirect('/products');
 });
 

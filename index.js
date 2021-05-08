@@ -13,6 +13,7 @@ const passport = require('passport');
 const LocalPassport = require('passport-local');
 const {Users}= require('./models/user.js');
 const authRouter = require('./router/auth.js');
+const {isLoggedIn}= require('./middleware.js');
 
 // method overrider 
 app.use(methodOverride('_method'));
