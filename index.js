@@ -14,7 +14,7 @@ const LocalPassport = require('passport-local');
 const {Users}= require('./models/user.js');
 const authRouter = require('./router/auth.js');
 const {isLoggedIn}= require('./middleware.js');
-
+const cartRouter  = require('./router/cart.js');
 // method overrider 
 app.use(methodOverride('_method'));
 
@@ -68,6 +68,7 @@ mongoose.connect('mongodb://localhost/shopApp', {useNewUrlParser: true, useUnifi
 const {productsRouter} = require('./router/products.js');
 app.use(productsRouter);
 app.use(authRouter);
+app.use(cartRouter);
 app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 

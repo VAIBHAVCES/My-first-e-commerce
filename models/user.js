@@ -1,14 +1,20 @@
 const mongoose = require('mongoose');
-
+const Products = require('./products.js')
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
    
     email:{
         type:String,
-        require:true,
+        required:true,
         unique:true
-    }
+    },
+    cart:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Product'
+        }
+    ]
 });
 
 userSchema.plugin(passportLocalMongoose);

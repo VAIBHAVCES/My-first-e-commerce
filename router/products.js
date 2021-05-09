@@ -11,8 +11,7 @@ router.get('/products' , async(req,res)=>{
     try{
 
         const pds = await Products.find({});
-        // res.send(pds);
-        // let obj ={pds,msg:req.flash('success')};
+        
         let obj = {pds}
         res.render('products/index',obj);
     }catch(err){

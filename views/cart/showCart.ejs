@@ -1,0 +1,24 @@
+<%-include('../partials/header.ejs')%>
+
+<%-include('../partials/navbar.ejs')%>
+
+<%-include('../partials/flash.ejs')%>
+
+<%for(let i=0 ;i < user.cart.length ;i++){ %>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4" >
+        <img src="<%=user.cart[i].img%>"  style =" object-fit: contain; height: 100%; width: 100%;"alt="No img found">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%=user.cart[i].name%></h5>
+          <p class="card-text"><%=user.cart[i].desc.substring(0,50)%></p>
+          <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%}%>
+<%-include('../partials/footer.ejs')%>

@@ -12,7 +12,10 @@
                           
                           <h5 class="card-title">$ <%= product.price %></h5>
                           <p class="card-text"> <%=product.desc %></p>
-                          <a href="#" class="btn btn-secondary">Add to cart</a>
+                          <form action="/user/<%=product._id%>/cart" method="POST">
+                            <button class="btn btn-secondary">Add to cart</button>
+                          </form>
+                            
                           <a href="/products/<%=product._id%>/edit" class="btn btn-warning">Edit </a>
 
                           <form action="/products/<%=product._id%>?_method=DELETE" method="post">

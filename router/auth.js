@@ -3,11 +3,11 @@ const passport = require('passport');
 const router = express.Router();
 
 const {Users} = require('../models/user.js');
-router.get('/fakeUser', async(req,res)=>{
-    const user = new Users({email:"vaibhav123@gmail.com",username:"vaibhav123"});
-    const newUser= await Users.register(user, 'vaibhav123');
-    res.send(newUser); 
-});
+// router.get('/fakeUser', async(req,res)=>{
+//     const user = new Users({email:"vaibhav123@gmail.com",username:"vaibhav123"});
+//     const newUser= await Users.register(user, 'vaibhav123');
+//     res.send(newUser); 
+// });
 
 
 
