@@ -33,7 +33,13 @@ router.get("/user/:userId/cart",isLoggedIn,async(req,res)=>{
                 res.redirect("/products");
         }
 
-})
+});
+
+router.delete("/user/:userId/product/:id",async(req,res)=>{
+        
+        await Users.findByIdAndUpdate(req.params.userId , {$pull : {cart:req.params.id } });
+        res.redirect(`/user/${req.params.userId}/cart`);
+});
 
 
 module.exports = router; 

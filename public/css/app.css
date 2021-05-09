@@ -1,18 +1,4 @@
 
-.container{
-    /* border:2px solid red; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-.card{
-    /* height: 400px; */
-}
-.card img{
-
-    height:45%;
-}
-
 .cartQuantity{
         position: absolute;
         background-color: red;
@@ -30,6 +16,7 @@
     top: -1px;
     right: 4px;
 }
+
 .navbar a, .navbar span{
     color: white;
 }

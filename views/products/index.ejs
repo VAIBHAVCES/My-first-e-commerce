@@ -16,11 +16,12 @@
         <div class="row">
             
                 <%for(let i=0;i<pds.length;i++) { %>
-                 <div class="col-lg-3">
+                 <div class="col-lg-3 col-md-3">
                     <div class="card my-3 text-center" style="width: 18rem;">
                         <img src="<%=pds[i].img%>" class="card-img-top" alt="products">
                         <div class="card-body">
-                          <h5 class="card-title"> <%= pds[i].name %></h5>
+                          <h4 class="card-title"> <%= pds[i].name %></h4>
+                          <span>Get it for : &#x20B9;<%= pds[i].price %></span>
                           <p class="card-text"> <%=pds[i].desc.substring(0,70) %></p>
                           <a href="/products/<%=pds[i]._id%>" class="btn btn-outline-primary">More Info</a>
                         </div>

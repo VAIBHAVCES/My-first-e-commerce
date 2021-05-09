@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#0077b6; ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">shoplid.com</a>
+      <a class="navbar-brand" href="/products" style ="font-family: 'Farro', sans-serif;
+      font-family: 'Goblin One', cursive;"> <i class="fa fa-check-circle mx-2" ></i>shoplid.com</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,7 +24,7 @@
           <% if(currentUser&& currentUser.username){%>
             <span> Hello ,  <%=currentUser.username%> </span>
             <a class="nav-link " aria-current="page" href="/logout" >Logout</a>
-            <a class="nav-link " aria-current="page" href="#" >Cart  
+            <a class="nav-link " aria-current="page" href="/user/<%=currentUser._id%>/cart" >  
               <i class="far fa-cart-plus fa-lg" style="position: relative;">
 
                   <div class="cartQuantity" >
